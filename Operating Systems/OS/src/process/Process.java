@@ -21,10 +21,20 @@ public Process( int userId,int parentId,int processId, int numOfLocations, int p
     this.numOfLocations = numOfLocations;
     state = ProcessState.NEW;
     this.priority = priority;
-    Memory.create(numOfLocations, userId, processId);
-
+  
+}
+public void create() {
+	if (Memory.getFreeSpace()>=numOfLocations) {
+		  Memory.create(numOfLocations, userId, processId);
+			setState(ProcessState.READY);
+		  
+	}
+	else {
+		setState(ProcessState.WAITING);
+	}
 }
 public void terminate() {
+	setState(ProcessState.TERMINATED);
 	Memory.delete(processId, userId);;
 }
 public int getUserId() {
