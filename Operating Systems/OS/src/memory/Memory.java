@@ -2,7 +2,7 @@ package memory;
 
 public class Memory {
 	int size;//size of the memory
-	Word[] memory;//a memory of words
+	static Word[] memory;//a memory of words
 
 	public Memory(int size) {
 		this.size = size;
@@ -20,7 +20,7 @@ public class Memory {
 		memory[location].delete();
 	}
 
-	public void delete(int processid, int userid) {
+	public static void delete(int processid, int userid) {
 		for (Word w : memory) {
 			if (!w.isEmpty()&&w.getProcess_id()==processid&&w.getUserid()==userid) {
 				w.delete();
@@ -29,7 +29,7 @@ public class Memory {
 		}
 	}
 
-	public void create(int numOfLocations, int userid, int processid) {
+	public static void create(int numOfLocations, int userid, int processid) {
 		int i = 0;
 		for (int j = 0; j < numOfLocations; j++) {
 

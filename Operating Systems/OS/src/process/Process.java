@@ -1,5 +1,7 @@
 package process;
 
+import memory.Memory;
+
 public class Process {
 // ids for the user,parent process, and the process itself
 public int  userId;
@@ -12,16 +14,19 @@ public ProcessState state;
 public int priority;
 
 // constructor for the process  (should take program as an input)
-public Process(int userId,int parentId,int processId, int numOfLocations, int priority) {
+public Process( int userId,int parentId,int processId, int numOfLocations, int priority) {
     this.userId = userId;
 	this.processId = processId;
     this.parentId =  parentId;
     this.numOfLocations = numOfLocations;
     state = ProcessState.NEW;
     this.priority = priority;
+    Memory.create(numOfLocations, userId, processId);
 
 }
-
+public void terminate() {
+	Memory.delete(processId, userId);;
+}
 public int getUserId() {
 	return userId;
 }
