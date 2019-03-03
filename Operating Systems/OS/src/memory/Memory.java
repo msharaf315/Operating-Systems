@@ -1,11 +1,19 @@
 package memory;
 
 public class Memory {
-	int size;//size of the memory
+	private static int size;//size of the memory
+	public static int getSize() {
+		return size;
+	}
+
+	public static void setSize(int size) {
+		Memory.size = size;
+	}
+
 	static Word[] memory;//a memory of words
 
 	public Memory(int size) {
-		this.size = size;
+		Memory.size = size;
 		memory = new Word[size];
 		for (int i = 0; i < memory.length; i++) {
 			memory[i] = new Word();
@@ -86,7 +94,14 @@ public class Memory {
 		return s;
 
 	}
-
+public static int getFreeSpace() {
+	int i=0;
+	for (Word w:memory) {
+		if (w.isEmpty())
+			i++;
+	}
+	return i;
+}
 	public static void main(String[] args) {
 		Memory m = new Memory(30);
 		m.create(10, 5, 5);
