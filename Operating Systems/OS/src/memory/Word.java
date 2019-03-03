@@ -74,11 +74,12 @@ public class Word {
 	}
 
 	public String toString() {
-		String s = "";
-		s += " " + userid;
-		s += " " + processid;
-		s += " " + value;
-		s += " " + isEmpty;
+		String s = "[";
+		s += "|" + Integer.toBinaryString(userid);
+		s += "|" + Integer.toBinaryString(processid);
+		s += "|" + Integer.toBinaryString(value);
+		s += "|" + Integer.toBinaryString(isEmpty);
+		s+="]";
 		return s;
 	}
 }

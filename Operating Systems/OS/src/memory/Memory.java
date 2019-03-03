@@ -1,8 +1,8 @@
 package memory;
 
 public class Memory {
-	int size;
-	Word[] memory;
+	int size;//size of the memory
+	Word[] memory;//a memory of words
 
 	public Memory(int size) {
 		this.size = size;
@@ -81,7 +81,7 @@ public class Memory {
 	public String toString() {
 		String s = "";
 		for (int i = 0; i < memory.length; i++) {
-			s += i+" " +memory[i].toString() + "\n";
+			s += i+": " +memory[i].toString() + "\n";
 		}
 		return s;
 
@@ -91,8 +91,6 @@ public class Memory {
 		Memory m = new Memory(30);
 		m.create(10, 5, 5);
 		m.create(10, 2, 1);
-	
-		
 		System.out.println(m.toString());
 		m.clear();
 		System.out.println(m.toString());
